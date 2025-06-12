@@ -175,7 +175,7 @@
 			AM4372_IOPAD(0xaa8, PIN_INPUT_PULLUP | MUX_MODE0) /* (T24) EMU1.EMU1 */
 		>;
 	};
-	
+
 	rtc_pins_default: rtc_pins_default {
 		pinctrl-single,pins = <
 			AM4372_IOPAD(0xab4, PIN_INPUT | MUX_MODE0) /* (AE6) RTC_PWRONRSTn.RTC_PORz */
@@ -375,6 +375,20 @@
 			AM4372_IOPAD(0xa54, PIN_OUTPUT | MUX_MODE0) /* (R24) spi4_d0.spi4_d0 */
 			AM4372_IOPAD(0xa58, PIN_INPUT_PULLUP | MUX_MODE0) /* (P24) spi4_d1.spi4_d1 */
 			AM4372_IOPAD(0xa5c, PIN_OUTPUT | MUX_MODE0) /* (N25) spi4_cs0.spi4_cs0 */
+		>;
+	};
+
+	dcan0_default: dcan0_default_pins {
+		pinctrl-single,pins = <
+			AM4372_IOPAD(0x978, PIN_OUTPUT | MUX_MODE2)         /* uart1_ctsn.d_can0_tx */
+			AM4372_IOPAD(0x97c, PIN_INPUT_PULLUP | MUX_MODE2)   /* uart1_rtsn.d_can0_rx */
+		>;
+	};
+
+	dcan0_sleep: dcan0_sleep_pins {
+		pinctrl-single,pins = <
+			AM4372_IOPAD(0x978, PIN_INPUT_PULLUP | MUX_MODE7)       /* uart1_ctsn.gpio0_12 */
+			AM4372_IOPAD(0x97c, PIN_INPUT_PULLUP | MUX_MODE7)       /* uart1_rtsn.gpio0_13 */
 		>;
 	};
 
@@ -650,8 +664,8 @@
 		AM4372_IOPAD(0x958, PIN_INPUT_PULLUP | MUX_MODE7) /* (T21) spi0_d1.gpio0[4] */
 		AM4372_IOPAD(0x95c, PIN_OUTPUT | MUX_MODE7) /* (T20) spi0_cs0.gpio0[5] */
 		AM4372_IOPAD(0x964, PIN_OUTPUT | MUX_MODE7) /* (G24) eCAP0_in_PWM0_out.gpio0[7] */
-		AM4372_IOPAD(0x978, PIN_OUTPUT | MUX_MODE7) /* (K22) uart1_ctsn.gpio0[12] */
-		AM4372_IOPAD(0x97c, PIN_OUTPUT | MUX_MODE7) /* (L22) uart1_rtsn.gpio0[13] */
+/*		AM4372_IOPAD(0x978, PIN_OUTPUT | MUX_MODE7) *//* (K22) uart1_ctsn.gpio0[12] */
+/*		AM4372_IOPAD(0x97c, PIN_OUTPUT | MUX_MODE7) *//* (L22) uart1_rtsn.gpio0[13] */
 		AM4372_IOPAD(0x980, PIN_OUTPUT | MUX_MODE7) /* (K21) uart1_rxd.gpio0[14] */
 		AM4372_IOPAD(0x984, PIN_INPUT_PULLUP | MUX_MODE7) /* (L21) uart1_txd.gpio0[15] */
 		AM4372_IOPAD(0xac0, PIN_OUTPUT | MUX_MODE7) /* (G21) USB0_DRVVBUS.gpio0[18] */
@@ -684,9 +698,10 @@
 		AM4372_IOPAD(0x8bc, PIN_INPUT | MUX_MODE7) /* (E19) dss_data7.gpio2[13] */
 		AM4372_IOPAD(0x8e0, PIN_INPUT | MUX_MODE7) /* (B23) dss_vsync.gpio2[22] */
 		AM4372_IOPAD(0x8e4, PIN_INPUT | MUX_MODE7) /* (A23) dss_hsync.gpio2[23] */
-		AM4372_IOPAD(0x8e8, PIN_INPUT | MUX_MODE7) /* (A22) dss_pclk.gpio2[24] */
+/*		AM4372_IOPAD(0x8e8, PIN_INPUT | MUX_MODE7) *//* (A22) dss_pclk.gpio2[24] */
+		AM4372_IOPAD(0x8e8, PIN_OUTPUT | MUX_MODE7) /* (A22) dss_pclk.gpio2[24] */
 		AM4372_IOPAD(0x8ec, PIN_INPUT | MUX_MODE7) /* (A24) dss_ac_bias_en.gpio2[25] */
-	>;	
+	>;
 };
 
 &gpio3 {
@@ -853,7 +868,7 @@
 	fixed-link {
 		speed = <1000>;
 		full-duplex;
-	};      
+	};
 };
 
 &cpsw_port2 {
@@ -903,4 +918,11 @@
 	pruss1_eth1_phy: ethernet-phy@1 {
 		reg = <3>;
 	};
+};
+
+&dcan0 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&dcan0_default>;
+	pinctrl-1 = <&dcan0_sleep>;
+	status = "okay";
 };
