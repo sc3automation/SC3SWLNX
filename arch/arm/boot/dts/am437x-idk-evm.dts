@@ -678,13 +678,13 @@
 	status = "okay";
 	pinctrl-single,pins = <
 		AM4372_IOPAD(0x800, PIN_OUTPUT | MUX_MODE7) /* (B5) gpmc_ad0.gpio1[0] */
-		AM4372_IOPAD(0x804, PIN_OUTPUT | MUX_MODE7) /* (A5) gpmc_ad1.gpio1[1] */
-		AM4372_IOPAD(0x808, PIN_OUTPUT | MUX_MODE7) /* (B6) gpmc_ad2.gpio1[2] */
-		AM4372_IOPAD(0x80c, PIN_OUTPUT | MUX_MODE7) /* (A6) gpmc_ad3.gpio1[3] */
+		AM4372_IOPAD(0x804, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (A5) gpmc_ad1.gpio1[1] */
+		AM4372_IOPAD(0x808, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (B6) gpmc_ad2.gpio1[2] */
+		AM4372_IOPAD(0x80c, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (A6) gpmc_ad3.gpio1[3] */
 		AM4372_IOPAD(0x810, PIN_OUTPUT | MUX_MODE7) /* (B7) gpmc_ad4.gpio1[4] */
-		AM4372_IOPAD(0x814, PIN_OUTPUT | MUX_MODE7) /* (A7) gpmc_ad5.gpio1[5] */
-		AM4372_IOPAD(0x818, PIN_OUTPUT | MUX_MODE7) /* (C8) gpmc_ad6.gpio1[6] */
-		AM4372_IOPAD(0x81c, PIN_OUTPUT | MUX_MODE7) /* (B8) gpmc_ad7.gpio1[7] */
+		AM4372_IOPAD(0x814, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (A7) gpmc_ad5.gpio1[5] */
+		AM4372_IOPAD(0x818, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (C8) gpmc_ad6.gpio1[6] */
+		AM4372_IOPAD(0x81c, PIN_INPUT_PULLDOWN | MUX_MODE7) /* (B8) gpmc_ad7.gpio1[7] */
 		AM4372_IOPAD(0x968, PIN_OUTPUT | MUX_MODE7) /* (L25) uart0_ctsn.gpio1[8] */
 		AM4372_IOPAD(0x96c, PIN_OUTPUT | MUX_MODE7) /* (J25) uart0_rtsn.gpio1[9] */
 		AM4372_IOPAD(0x878, PIN_OUTPUT | MUX_MODE7) /* (A3) gpmc_be1n.gpio1[28] */
